@@ -1,4 +1,3 @@
-<!-- components/header.php -->
 <header class="main-header">
     <h1>BOYCOLD CAFE</h1>
     <nav class="main-nav">

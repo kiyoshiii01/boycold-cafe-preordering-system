@@ -16,12 +16,10 @@ ini_set('display_errors', 1);
         <!-- Title -->
         <h1 class="staff-title">Staff Dashboard — Orders</h1>
 
-        <!-- Search Bar & Filters Preview -->
         <div class="staff-search-box">
             <span>Search Order   Filter: All   Date: Today</span>
         </div>
 
-        <!-- Status Filter Buttons -->
         <div class="staff-filter-buttons">
             <button type="button" class="filter-btn">Pending</button>
             <button type="button" class="filter-btn">Confirmed</button>
@@ -29,7 +27,6 @@ ini_set('display_errors', 1);
             <button type="button" class="filter-btn">Ready</button>
         </div>
 
-        <!-- Orders List -->
         <div class="staff-orders-list">
             
             <?php for ($i = 1; $i <= 4; $i++): ?>

@@ -13,16 +13,13 @@ ini_set('display_errors', 1);
 <body class="inventory-page">
 
     <div class="inventory-container">
-        <!-- Title -->
         <h1 class="inventory-title">Inventory / Stock Management</h1>
 
-        <!-- Search Product & Add Product Bar -->
         <div class="inventory-top-bar">
             <span class="search-placeholder">Search Product</span>
             <button type="button" class="add-product-btn">+ Add Product</button>
         </div>
 
-        <!-- Inventory Items List -->
         <div class="inventory-list">
             
             <?php for ($i = 1; $i <= 5; $i++): ?>

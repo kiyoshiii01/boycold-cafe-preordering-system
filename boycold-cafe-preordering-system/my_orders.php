@@ -13,13 +13,11 @@ ini_set('display_errors', 1);
 <body class="my-orders-page">
 
     <div class="orders-container">
-        <!-- Header & Back Link -->
         <div class="orders-header">
             <h1 class="orders-title">My Orders</h1>
             <a href="home.php" class="back-link">← Back to Menu</a>
         </div>
 
-        <!-- Orders List -->
         <div class="orders-list">
             
             <!-- Order Card 1 -->
@@ -34,7 +32,6 @@ ini_set('display_errors', 1);
                 </div>
             </div>
 
-            <!-- Order Card 2 -->
             <div class="order-item-card with-button">
                 <div class="order-info-left">
                     <div class="order-card-top">

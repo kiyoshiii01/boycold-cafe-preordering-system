@@ -13,16 +13,13 @@ ini_set('display_errors', 1);
 <body class="cart-page">
 
     <div class="cart-container">
-        <!-- Title & Back Link -->
         <div class="cart-header-section">
             <h1 class="cart-title">Cart & Checkout</h1>
             <a href="home.php" class="back-to-menu-link">← Back to Menu</a>
         </div>
 
-        <!-- Main Cart Grid Layout -->
         <div class="cart-grid">
             
-            <!-- Left Side: Order Summary Box -->
             <div class="order-summary-box">
                 <div class="cart-items-list">
                     <div class="cart-item-row">
@@ -41,7 +38,6 @@ ini_set('display_errors', 1);
                 </div>
             </div>
 
-            <!-- Right Side: Pickup & Payment Options -->
             <div class="checkout-options-box">
                 <div class="form-group-cart">
                     <label>Pickup Date & Time</label>
@@ -56,7 +52,6 @@ ini_set('display_errors', 1);
 
         </div>
 
-        <!-- Bottom: Place Order Button (Ginawa nating clickable papuntang order_confirm.php) -->
         <div class="place-order-container">
             <button type="button" class="place-order-btn" onclick="window.location.href='order_confirm.php'">Place Order</button>
         </div>

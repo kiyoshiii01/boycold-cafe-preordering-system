@@ -16,7 +16,6 @@ ini_set('display_errors', 1);
         <!-- Title -->
         <h1 class="sales-title">Sales Dashboard</h1>
 
-        <!-- Top Metric Cards Grid -->
         <div class="sales-metrics-grid">
             <div class="metric-card">
                 <span class="metric-label">Today</span>
@@ -36,7 +35,6 @@ ini_set('display_errors', 1);
             </div>
         </div>
 
-        <!-- Sales Chart Placeholder Box -->
         <div class="sales-chart-box">
             <span>[ SALES CHART PLACEHOLDER ]</span>
         </div>

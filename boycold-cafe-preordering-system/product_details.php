@@ -14,26 +14,21 @@ ini_set('display_errors', 1);
 
     <div class="product-details-frame">
         
-        <!-- Back to Menu Link -->
         <div class="back-link-container">
             <a href="home.php" class="back-link">← Back to Menu</a>
         </div>
-
-        <!-- Main Content Grid -->
+>
         <div class="product-content-grid">
             
-            <!-- Left: Product Image Box -->
             <div class="product-image-box">
                 <span>[ PRODUCT IMAGE ]</span>
             </div>
 
-            <!-- Right: Product Info & Options -->
             <div class="product-info-box">
                 <h1 class="product-name-title">Product Name</h1>
                 <div class="product-price">₱ 00.00</div>
                 <p class="product-desc">Description / ingredients placeholder</p>
 
-                <!-- Size Selection -->
                 <div class="option-group">
                     <label class="option-label">Size</label>
                     <div class="size-buttons">
@@ -42,7 +37,6 @@ ini_set('display_errors', 1);
                     </div>
                 </div>
 
-                <!-- Quantity Selector -->
                 <div class="option-group">
                     <label class="option-label">Quantity</label>
                     <div class="quantity-selector">
@@ -52,9 +46,8 @@ ini_set('display_errors', 1);
                     </div>
                 </div>
 
-                <!-- Add to Cart Button -->
                 <div class="action-container">
-                    <button type="button" class="add-to-cart-btn">Add to Cart</button>
+                    <button type="button" class="add-to-cart-btn" onclick="window.location.href='home.php'">Add to Cart</button>
                 </div>
             </div>
 

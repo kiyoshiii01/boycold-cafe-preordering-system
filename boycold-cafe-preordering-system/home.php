@@ -9,7 +9,7 @@
 <body class="dashboard-page">
 
     <div class="dashboard-container">
-        <!-- Top Header: Title & Nav Buttons -->
+
         <div class="top-header">
             <h1 class="cafe-title">BOYCOLD CAFE</h1>
             <div class="nav-buttons">
@@ -20,15 +20,12 @@
             </div>
         </div>
 
-        <!-- Menu Title -->
         <div class="menu-title">Menu</div>
 
-        <!-- Search Bar -->
         <div class="search-container">
             <input type="text" placeholder="Search menu items...">
         </div>
 
-        <!-- Category Buttons -->
         <div class="category-buttons">
             <button>Coffee</button>
             <button>Non-Coffee</button>
@@ -36,7 +33,6 @@
             <button>Meals</button>
         </div>
 
-        <!-- Product Grid (Cards) -->
         <div class="product-grid">
             <?php for ($i = 1; $i <= 9; $i++): ?>
             <div class="product-card" onclick="window.location.href='product_details.php?id=<?php echo $i; ?>'" style="cursor: pointer;">

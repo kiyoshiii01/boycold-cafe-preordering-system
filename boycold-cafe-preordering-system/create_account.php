@@ -9,44 +9,36 @@
 <body class="form-page">
 
     <div style="width: 100%; max-width: 450px; text-align: center;">
-        <!-- Title -->
         <h1 class="form-title" style="font-size: 2.5rem;">Create Account</h1>
 
-        <!-- Form Container -->
         <div class="form-box-container">
             <form action="#" method="POST">
                 
-                <!-- Full Name Field -->
                 <div class="input-group">
                     <label>Full Name</label>
-                    <input type="text" required>
+                    <input type="text" name="fullname" placeholder="Enter full name" required>
                 </div>
 
-                <!-- Email Field -->
                 <div class="input-group">
                     <label>Email</label>
-                    <input type="email" required>
+                    <input type="email" name="email" placeholder="Enter email" required>
                 </div>
 
-                <!-- Phone Number Field -->
                 <div class="input-group">
                     <label>Phone Number</label>
-                    <input type="tel" required>
+                    <input type="tel" name="phone" placeholder="Enter phone number" required>
                 </div>
 
-                <!-- Password Field -->
                 <div class="input-group">
                     <label>Password</label>
-                    <input type="password" required>
+                    <input type="password" name="password" placeholder="Enter password" required>
                 </div>
 
-                <!-- Confirm Password Field -->
                 <div class="input-group" style="margin-bottom: 25px;">
                     <label>Confirm Password</label>
-                    <input type="password" required>
+                    <input type="password" name="confirm_password" placeholder="Confirm password" required>
                 </div>
 
-                <!-- Register Button -->
                 <div>
                     <button type="submit" class="submit-btn">
                         Register
@@ -55,9 +47,8 @@
             </form>
         </div>
 
-        <!-- Back to Login link -->
         <div class="form-footer-link" style="text-align: left; margin-top: 20px;">
-            <a href="login.php">← Back to Login</a>
+            <a href="login.php" style="color: #4A3525; font-weight: bold; text-decoration: underline;">← Back to Login</a>
         </div>
     </div>
 
