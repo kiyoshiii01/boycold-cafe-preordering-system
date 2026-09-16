@@ -12,4 +12,4 @@ Edhrian Panlilio.
 A web-based pre-ordering system for Boycold Cafe designed based on the approved Figma prototype to streamline customer orders.
 
 ## Tech Stack
-- Frontend: PHP, CSS
+- Frontend: PHP, CSS, JS
