@@ -2,7 +2,6 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Mock inventory data (Pwede mong ikonekta sa database sa hinaharap)
 $inventory_items = [
     ['name' => 'Iced Coffee', 'category' => 'Beverage', 'stock' => 20, 'sold' => 5, 'remaining' => 15],
     ['name' => 'Hot Americano', 'category' => 'Beverage', 'stock' => 30, 'sold' => 12, 'remaining' => 18],
@@ -44,12 +43,37 @@ $inventory_items = [
             margin: 0 auto;
         }
 
+        .inventory-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
         .inventory-title {
             color: white;
             font-size: 2.2rem;
-            margin: 0 0 20px 0;
+            margin: 0;
             font-weight: bold;
             text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+
+        .logout-btn {
+            background-color: #a93226;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: background-color 0.2s, opacity 0.2s;
+        }
+
+        .logout-btn:hover {
+            background-color: #922b21;
         }
 
         .inventory-top-bar {
@@ -184,7 +208,11 @@ $inventory_items = [
 <body class="inventory-page">
 
     <div class="inventory-container">
-        <h1 class="inventory-title">Inventory / Stock Management</h1>
+        <!-- Header with Title and Logout Button on Top -->
+        <div class="inventory-header-top">
+            <h1 class="inventory-title">Inventory / Stock Management</h1>
+            <a href="logout.php?redirect=inventory" class="logout-btn">Logout</a>
+        </div>
 
         <div class="inventory-top-bar">
             <input type="text" placeholder="Search product..." class="search-input">
@@ -193,7 +221,7 @@ $inventory_items = [
 
         <div class="inventory-list">
             <?php foreach ($inventory_items as $item): ?>
-            <!-- Inventory Item Card -->
+
             <div class="inventory-card">
                 <div class="inventory-info">
                     <span class="item-name"><?php echo htmlspecialchars($item['name']); ?></span>

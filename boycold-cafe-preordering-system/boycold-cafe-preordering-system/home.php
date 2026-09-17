@@ -2,10 +2,8 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Kunin ang kasalukuyang category mula sa URL, default ay 'Coffee' kapag wala pa
 $current_category = isset($_GET['category']) ? $_GET['category'] : 'Coffee';
 
-// Iba't ibang mock data para sa bawat category para makita mo ang pagbabago
 $menu_data = [
     'Coffee' => [
         ['name' => 'Caramel Macchiato', 'price' => '120.00'],
@@ -47,7 +45,7 @@ $menu_data = [
         ['name' => 'Spaghetti', 'price' => '130.00'],
         ['name' => 'Carbonara', 'price' => '140.00'],
         ['name' => 'Chicken Wings Rice', 'price' => '170.00'],
-        ['name' => 'Club Sandwich', 'price' => '140.00'],
+        ['name' => 'Sandwich', 'price' => '99.00'],
         ['name' => 'Burger Steak', 'price' => '160.00'],
         ['name' => 'Hungarian Sandwich', 'price' => '150.00']
     ]
@@ -87,6 +85,8 @@ $products = isset($menu_data[$current_category]) ? $menu_data[$current_category]
             justify-content: space-between;
             align-items: center;
             margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
         }
 
         .cafe-title {
@@ -100,6 +100,8 @@ $products = isset($menu_data[$current_category]) ? $menu_data[$current_category]
         .nav-buttons {
             display: flex;
             gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
         .nav-buttons a {
@@ -115,6 +117,15 @@ $products = isset($menu_data[$current_category]) ? $menu_data[$current_category]
 
         .nav-buttons a:hover {
             background-color: #4A3525;
+        }
+
+        /* Istilo para sa Logout Button */
+        .nav-buttons a.logout-nav-btn {
+            background-color: #a93226;
+        }
+
+        .nav-buttons a.logout-nav-btn:hover {
+            background-color: #922b21;
         }
 
         .menu-title {
@@ -151,6 +162,7 @@ $products = isset($menu_data[$current_category]) ? $menu_data[$current_category]
             display: flex;
             gap: 12px;
             margin-bottom: 30px;
+            flex-wrap: wrap;
         }
 
         .category-btn {
@@ -261,6 +273,7 @@ $products = isset($menu_data[$current_category]) ? $menu_data[$current_category]
                 <a href="cart.php">Cart</a>
                 <a href="my_orders.php">My Orders</a>
                 <a href="profile.php">Profile</a>
+                <a href="logout.php" class="logout-nav-btn">Logout</a>
             </div>
         </div>
 

@@ -42,12 +42,52 @@ $sales_data = [
             margin: 0 auto;
         }
 
+        .sales-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
         .sales-title {
             color: white;
             font-size: 2.2rem;
-            margin: 0 0 25px 0;
+            margin: 0;
             font-weight: bold;
             text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background-color: #6B4F3F;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: background-color 0.2s, opacity 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: #4A3525;
+            opacity: 0.95;
+        }
+
+        .logout-btn {
+            background-color: #a93226;
+        }
+
+        .logout-btn:hover {
+            background-color: #922b21;
         }
 
         .sales-metrics-grid {
@@ -123,8 +163,13 @@ $sales_data = [
 <body class="sales-dashboard-page">
 
     <div class="sales-container">
-        <!-- Title -->
-        <h1 class="sales-title">Sales Dashboard</h1>
+        <!-- Header with Title and Logout Button Only -->
+        <div class="sales-header-top">
+            <h1 class="sales-title">Sales Dashboard</h1>
+            <div class="nav-buttons">
+                <a href="logout.php?redirect=sales" class="nav-btn logout-btn">Logout</a>
+            </div>
+        </div>
 
         <div class="sales-metrics-grid">
             <div class="metric-card">
