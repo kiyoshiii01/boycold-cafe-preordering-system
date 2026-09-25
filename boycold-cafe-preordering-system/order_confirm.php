@@ -1,6 +1,9 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
+$order_id = "BC-0001"; 
+$pickup_datetime = date('F d, Y • h:i A');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +11,135 @@ ini_set('display_errors', 1);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boycold Cafe - Order Confirmation</title>
-    <link rel="stylesheet" href="css/style.css?v=2">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body.confirm-page {
+            margin: 0;
+            padding: 40px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background:
+                linear-gradient(rgba(30, 20, 15, 0.65), rgba(30, 20, 15, 0.65)),
+                url('images/bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .confirm-container {
+            width: 100%;
+            max-width: 550px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .confirm-header {
+            margin-bottom: 25px;
+        }
+
+        .confirm-title {
+            color: white;
+            font-size: 2.2rem;
+            margin: 0 0 10px 0;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+        }
+
+        .confirm-subtitle {
+            color: #f3e5d8;
+            font-size: 1.05rem;
+            margin: 0;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+
+        .order-card-box {
+            background: rgba(45, 30, 22, 0.85);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            color: white;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .order-id {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 12px;
+        }
+
+        .order-pickup, .order-status {
+            font-size: 1.05rem;
+            color: #e0d0c0;
+        }
+
+        .order-pickup strong, .order-status strong {
+            color: white;
+        }
+
+        .order-status span {
+            font-weight: 600;
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .confirm-action-container {
+            width: 100%;
+        }
+
+        .view-orders-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #f3e5d8 0%, #e2d2c3 100%);
+            color: #5c3a21;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .view-orders-btn:hover {
+            background: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 480px) {
+            body.confirm-page {
+                padding: 20px;
+            }
+            .confirm-title {
+                font-size: 1.8rem;
+            }
+            .order-card-box {
+                padding: 25px;
+            }
+        }
+    </style>
 </head>
 <body class="confirm-page">
 
@@ -19,9 +150,9 @@ ini_set('display_errors', 1);
         </div>
 
         <div class="order-card-box">
-            <div class="order-id">Order #BC-0001</div>
-            <div class="order-pickup">Pickup: August 22, 2026 • 10:30 AM</div>
-            <div class="order-status">Status: Preparing</div>
+            <div class="order-id">Order #<?php echo htmlspecialchars($order_id); ?></div>
+            <div class="order-pickup"><strong>Pickup:</strong> <?php echo htmlspecialchars($pickup_datetime); ?></div>
+            <div class="order-status"><strong>Status:</strong> <span>Preparing</span></div>
         </div>
 
         <div class="confirm-action-container">
