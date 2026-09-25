@@ -1,13 +1,10 @@
-
-Warning: Undefined array key "REQUEST_METHOD" in /mnt/data/boycold-convert-work/boycold-cafe-preordering-system/login.html on line 8
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Boycold Cafe - Login</title>
-<style>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Boycold Cafe - Login</title>
+    <style>
         * {
             box-sizing: border-box;
         }
@@ -52,7 +49,7 @@ Warning: Undefined array key "REQUEST_METHOD" in /mnt/data/boycold-convert-work/
             text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
         }
 
-        .alert-error {
+        .error-message {
             background-color: rgba(198, 40, 40, 0.9);
             color: white;
             padding: 12px 15px;
@@ -165,50 +162,56 @@ Warning: Undefined array key "REQUEST_METHOD" in /mnt/data/boycold-convert-work/
 </head>
 <body class="form-page">
 <div class="form-box-container">
-<h1 class="form-title">Login</h1>
-<form action="#" method="post">
-<div class="input-group">
-<label>Email</label>
-<input name="email" placeholder="Enter email" required="" type="email"/>
+    <h1 class="form-title">Login</h1>
+    <form id="loginForm">
+        <div class="input-group">
+            <label>Email</label>
+            <input name="email" placeholder="Enter email" required type="email"/>
+        </div>
+        <div class="input-group">
+            <label>Password</label>
+            <input name="password" placeholder="Enter Password" required type="password"/>
+        </div>
+        <div>
+            <button class="submit-btn" type="submit">
+                Log in
+            </button>
+        </div>
+    </form>
+    <div class="form-footer-link">
+        <span>No account?</span>
+        <a href="create_account.html">Register</a>
+    </div>
 </div>
-<div class="input-group">
-<label>Password</label>
-<input name="password" placeholder="Enter Password" required="" type="password"/>
-</div>
-<div>
-<button class="submit-btn" type="submit">
-                    Log in
-                </button>
-</div>
-</form>
-<div class="form-footer-link">
-<span>No account?</span>
-<a href="create_account.html">Register</a>
-</div>
-</div>
+
 <script>
 const demoUsers = {
-  'staff@boycold.com': {name:'Staff User', role:'Staff', page:'staff_dashboard.html'},
-  'sales@boycold.com': {name:'Sales User', role:'Sales', page:'sales.html'},
-  'inventory@boycold.com': {name:'Inventory User', role:'Inventory', page:'inventory.html'},
-  'cashier@boycold.com': {name:'Cashier User', role:'Cashier', page:'home.html'}
+    'staff@boycold.com': {name:'Staff User', role:'Staff', page:'staff_dashboard.html'},
+    'sales@boycold.com': {name:'Sales User', role:'Sales', page:'sales.html'},
+    'inventory@boycold.com': {name:'Inventory User', role:'Inventory', page:'inventory.html'},
+    'cashier@boycold.com': {name:'Cashier User', role:'Cashier', page:'home.html'}
 };
-document.querySelector('form')?.addEventListener('submit', function(e){
+
+document.getElementById('loginForm').addEventListener('submit', function(e){
     e.preventDefault();
     const email = this.querySelector('[name="email"]').value.trim().toLowerCase();
     const password = this.querySelector('[name="password"]').value;
     const user = demoUsers[email];
+    
     const oldError = document.querySelector('.error-message');
     if (oldError) oldError.remove();
+    
     if (!user || !password) {
         const p = document.createElement('div');
-        p.className='error-message';
-        p.textContent='Invalid email or password.';
+        p.className = 'error-message';
+        p.textContent = 'Invalid email or password.';
         this.prepend(p);
         return;
     }
+    
     localStorage.setItem('boycoldUser', JSON.stringify(user));
     location.href = user.page;
 });
-</script></body>
+</script>
+</body>
 </html>
