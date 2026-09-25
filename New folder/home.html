@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Boycold Cafe - Dashboard &amp; Menu</title>
+<style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body.dashboard-page {
+            margin: 0;
+            padding: 30px 40px;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background:
+                linear-gradient(rgba(30, 20, 15, 0.65), rgba(30, 20, 15, 0.65)),
+                url('images/bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .dashboard-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .top-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .cafe-title {
+            color: white;
+            font-size: 2.2rem;
+            margin: 0;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .nav-buttons a {
+            background: rgba(45, 30, 22, 0.8);
+            color: #f3e5d8;
+            padding: 10px 18px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            transition: all 0.3s ease;
+        }
+
+        .nav-buttons a:hover {
+            background: #6B4F3F;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .nav-buttons a.logout-nav-btn {
+            background: rgba(198, 40, 40, 0.85);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-buttons a.logout-nav-btn:hover {
+            background: rgb(198, 40, 40);
+        }
+
+        .menu-title {
+            color: white;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 400px;
+            margin-bottom: 20px;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 13px 16px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            font-size: 1rem;
+            outline: none;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .search-container input:focus {
+            border-color: #8D6E63;
+            background: #ffffff;
+            box-shadow: 0 4px 15px rgba(141, 110, 99, 0.3);
+        }
+
+        .category-buttons {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background: rgba(45, 30, 22, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 10px 22px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            color: #f3e5d8;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover {
+            background: #6B4F3F;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .category-btn.active {
+            background: linear-gradient(135deg, #8D6E63 0%, #5c3a21 100%);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.3);
+            font-weight: 700;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .product-card {
+            background: rgba(45, 30, 22, 0.82);
+            padding: 16px;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 250px;
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            background: rgba(55, 38, 28, 0.9);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .product-img-container {
+            width: 100%;
+            height: 125px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .product-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover .product-img-container img {
+            transform: scale(1.05);
+        }
+
+        .product-name {
+            font-weight: 700;
+            color: white;
+            font-size: 1.05rem;
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #f3e5d8;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        .product-footer span {
+            color: #ffffff;
+        }
+
+        .add-btn {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 6px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+
+        .add-btn:hover {
+            background: #ffffff;
+            color: #5c3a21;
+        }
+
+        @media (max-width: 768px) {
+            body.dashboard-page {
+                padding: 20px 15px;
+            }
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            .search-container {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="dashboard-page">
+<div class="dashboard-container">
+<div class="top-header">
+<h1 class="cafe-title">BOYCOLD CAFE</h1>
+<div class="nav-buttons">
+<a href="home.html">Home</a>
+<a href="cart.html">Cart</a>
+<a href="my_orders.html">My Orders</a>
+<a href="profile.html">Profile</a>
+<a class="logout-nav-btn" href="logout.html">Logout</a>
+</div>
+</div>
+<div class="menu-title">Menu - Coffee</div>
+<div class="container search-container" style="padding:0; margin-bottom: 20px; width: 100%; max-width: 400px;">
+<input placeholder="Search menu items..." type="text"/>
+</div>
+<div class="category-buttons">
+<a class="category-btn active" href="home.html?category=Coffee">Coffee</a>
+<a class="category-btn" href="home.html?category=Non-Coffee">Non-Coffee</a>
+<a class="category-btn" href="home.html?category=Pastries">Pastries</a>
+<a class="category-btn" href="home.html?category=Meals">Meals</a>
+</div>
+<div class="product-grid"></div>
+</div>
+<script>
+const menuData = {"Coffee": [{"name": "Caramel Macchiato", "price": 120.0, "img": "images/coffee/CaramelM.png", "id": 1}, {"name": "Spanish Latte", "price": 110.0, "img": "images/coffee/SpanishL.png", "id": 2}, {"name": "Cafe Mocha", "price": 125.0, "img": "images/coffee/CafeM.png", "id": 3}, {"name": "Americano", "price": 90.0, "img": "images/coffee/Americano.png", "id": 4}, {"name": "Cappuccino", "price": 100.0, "img": "images/coffee/Capp.png", "id": 5}, {"name": "Cold Brew", "price": 115.0, "img": "images/coffee/ColdB.png", "id": 6}, {"name": "Vanilla Latte", "price": 120.0, "img": "images/coffee/VanillaL.png", "id": 7}, {"name": "Dark Mocha", "price": 130.0, "img": "images/coffee/DarkM.png", "id": 8}, {"name": "Dirty Matcha", "price": 140.0, "img": "images/coffee/DirtyM.png", "id": 9}], "Non-Coffee": [{"name": "Matcha Latte", "price": 130.0, "img": "images/non_coffee/MatchaL.png", "id": 1}, {"name": "Dark Chocolate", "price": 120.0, "img": "images/non_coffee/DarkC.png", "id": 2}, {"name": "Strawberry Milk", "price": 110.0, "img": "images/non_coffee/StrawberryM.png", "id": 3}, {"name": "Wintermelon Milk Tea", "price": 100.0, "img": "images/non_coffee/WinterMMT.png", "id": 4}, {"name": "Hokkaido Milk Tea", "price": 100.0, "img": "images/non_coffee/HokkaidoMT.png", "id": 5}, {"name": "Taro Milktea", "price": 100.0, "img": "images/non_coffee/TaroMT.png", "id": 6}, {"name": "Okinawa Milk Tea", "price": 100.0, "img": "images/non_coffee/OkinawaMT.png", "id": 7}, {"name": "Chocolate Frappe", "price": 140.0, "img": "images/non_coffee/ChocolateF.png", "id": 8}, {"name": "Cookies & Cream", "price": 135.0, "img": "images/non_coffee/C&C.png", "id": 9}], "Pastries": [{"name": "Butter Croissant", "price": 85.0, "img": "images/pastries/ButterC.png", "id": 1}, {"name": "Chocolate Chip Cookie", "price": 60.0, "img": "images/pastries/ChocolateCC.png", "id": 2}, {"name": "Blueberry Cheesecake", "price": 150.0, "img": "images/pastries/BlueberryCC.png", "id": 3}, {"name": "Ensaymada", "price": 75.0, "img": "images/pastries/Ensaymada.png", "id": 4}, {"name": "Banana Bread", "price": 70.0, "img": "images/pastries/BananaB.png", "id": 5}, {"name": "Cinnamon Roll", "price": 90.0, "img": "images/pastries/CinnamonR.png", "id": 6}, {"name": "Brownie Fudge", "price": 65.0, "img": "images/pastries/BrownieF.png", "id": 7}, {"name": "Carrot Cake", "price": 140.0, "img": "images/pastries/CarrotC.png", "id": 8}, {"name": "Plain Bagel", "price": 80.0, "img": "images/pastries/Plain Bagel.png", "id": 9}], "Meals": [{"name": "Tapsilog", "price": 160.0, "img": "images/meals/Tapsilog.png", "id": 1}, {"name": "Tocilog", "price": 150.0, "img": "images/meals/Tocilog.png", "id": 2}, {"name": "Longsilog", "price": 150.0, "img": "images/meals/Longsilog.png", "id": 3}, {"name": "Spaghetti", "price": 130.0, "img": "images/meals/Spaghetti.png", "id": 4}, {"name": "Carbonara", "price": 140.0, "img": "images/meals/Carbonara.png", "id": 5}, {"name": "Chicken Wings Rice", "price": 170.0, "img": "images/meals/ChickenWR.png", "id": 6}, {"name": "Sandwich", "price": 99.0, "img": "images/meals/Sandwich.png", "id": 7}, {"name": "Burger Steak", "price": 160.0, "img": "images/meals/BurgerS.png", "id": 8}, {"name": "Hungarian Sandwich", "price": 150.0, "img": "images/meals/HungarianS.png", "id": 9}]};
+const params = new URLSearchParams(location.search);
+let currentCategory = params.get('category') || 'Coffee';
+if (!menuData[currentCategory]) currentCategory = 'Coffee';
+
+const grid = document.querySelector('.product-grid');
+const title = document.querySelector('.menu-title');
+const searchInput = document.querySelector('.search-container input');
+const categoryButtons = document.querySelectorAll('.category-btn');
+
+function renderMenu(items = menuData[currentCategory]) {
+    grid.innerHTML = '';
+    if (!items.length) {
+        grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;font-weight:600;">No products found.</div>';
+        return;
+    }
+    items.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.onclick = () => location.href = `product_details.html?category=${encodeURIComponent(currentCategory)}&id=${item.id}`;
+        card.innerHTML = `
+            <div class="product-img-container"><img alt="${item.name}" src="${item.img}"></div>
+            <div class="product-name">${item.name}</div>
+            <div class="product-footer"><span>₱ ${item.price.toFixed(2)}</span><span class="add-btn">+ Add</span></div>`;
+        grid.appendChild(card);
+    });
+}
+
+title.textContent = 'Menu - ' + currentCategory;
+categoryButtons.forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim() === currentCategory);
+});
+renderMenu();
+
+searchInput?.addEventListener('input', function() {
+    const q = this.value.toLowerCase().trim();
+    renderMenu(menuData[currentCategory].filter(item => item.name.toLowerCase().includes(q)));
+});
+</script></body>
+</html>
