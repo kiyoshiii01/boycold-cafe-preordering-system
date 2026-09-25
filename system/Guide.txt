@@ -1,0 +1,6 @@
+account: 
+
+staff@boycold.com
+sales@boycold.com
+inventory@boycold.com
+cashier@boycold.com

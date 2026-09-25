@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Boycold Cafe - Order Confirmation</title>
+<style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body.confirm-page {
+            margin: 0;
+            padding: 40px;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background:
+                linear-gradient(rgba(30, 20, 15, 0.65), rgba(30, 20, 15, 0.65)),
+                url('images/bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .confirm-container {
+            width: 100%;
+            max-width: 550px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .confirm-header {
+            margin-bottom: 25px;
+        }
+
+        .confirm-title {
+            color: white;
+            font-size: 2.2rem;
+            margin: 0 0 10px 0;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+        }
+
+        .confirm-subtitle {
+            color: #f3e5d8;
+            font-size: 1.05rem;
+            margin: 0;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+
+        .order-card-box {
+            background: rgba(45, 30, 22, 0.85);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            color: white;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .order-id {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 12px;
+        }
+
+        .order-pickup, .order-status {
+            font-size: 1.05rem;
+            color: #e0d0c0;
+        }
+
+        .order-pickup strong, .order-status strong {
+            color: white;
+        }
+
+        .order-status span {
+            font-weight: 600;
+            background-color: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .confirm-action-container {
+            width: 100%;
+        }
+
+        .view-orders-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #f3e5d8 0%, #e2d2c3 100%);
+            color: #5c3a21;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .view-orders-btn:hover {
+            background: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 480px) {
+            body.confirm-page {
+                padding: 20px;
+            }
+            .confirm-title {
+                font-size: 1.8rem;
+            }
+            .order-card-box {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body class="confirm-page">
+<div class="confirm-container">
+<div class="confirm-header">
+<h1 class="confirm-title">Order Confirmed!</h1>
+<p class="confirm-subtitle">Thank you for ordering from Boycold Cafe.</p>
+</div>
+<div class="order-card-box">
+<div class="order-id">Order #BC-0001</div>
+<div class="order-pickup"><strong>Pickup:</strong> September 25, 2026 • 11:31 AM</div>
+<div class="order-status"><strong>Status:</strong> <span>Preparing</span></div>
+</div>
+<div class="confirm-action-container">
+<button class="view-orders-btn" onclick="window.location.href='my_orders.html'" type="button">View My Orders</button>
+</div>
+</div>
+<script>
+const lastOrder=JSON.parse(localStorage.getItem('boycoldLastOrder')||'null');
+if(lastOrder){
+ const text=document.body.innerText;
+ document.querySelectorAll('*').forEach(el=>{
+   if(el.children.length===0 && el.textContent.includes('BC-0001')) el.textContent=el.textContent.replace('BC-0001',lastOrder.order_no);
+ });
+ const dateEl=document.querySelector('[class*="date"], [class*="time"]');
+ if(dateEl && lastOrder.pickup_time) dateEl.textContent=lastOrder.pickup_time;
+}
+</script></body>
+</html>
